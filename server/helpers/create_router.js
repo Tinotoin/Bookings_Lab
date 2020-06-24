@@ -16,6 +16,35 @@ router.get('/', (req, res) => {
       });
   });
 
+  // add new booking
+    router.post('/', (req, res) => {
+      const newData = req.body;
+      collection.insertOne(newData)
+      .then((result) => {
+        res.json(result.ops[0])
+        // console.log(result);
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500);
+        res.json({status: 500, error: err});
+    })
+  });
+
+  // delete bookingById
+    router.delete('/:id', (req, res) => {
+      const id = req.params.id;
+      collection.deleteOne({_id: ObjectID(id)})
+      .then((doc) => {
+        res.json(doc)
+      })
+      .catch((err) => {
+        console.error(err);
+        res.status(500);
+        res.json({status: 500, error: err});
+    })
+  })
+
 return router;
 
 };
