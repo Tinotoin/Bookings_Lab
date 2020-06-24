@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="guestsGrid">
-    <guest v-for="guest in guests" :key="guest" :guest="guest" />
+    <guest v-for="guest in guests" :key="guest._id" :guest="guest" />
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
 
 <style lang="css" scoped>
 
-#sightingsGrid {
+#guestsGrid {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-evenly;

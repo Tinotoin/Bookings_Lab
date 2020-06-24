@@ -4,13 +4,13 @@
     <p> {{ guest.email }}</p>
     <p> {{ guest.booked }}</p>
 
-    <button v-on:click="handleDelete(guest.id)">Delete Guest</button>
+    <button v-on:click="handleDelete(guest._id)">Delete Guest</button>
   </div>
 </template>
 
 <script>
 
-import {eventBus} from './main.js';
+import {eventBus} from '../main.js';
 
 export default {
   name: 'guest',

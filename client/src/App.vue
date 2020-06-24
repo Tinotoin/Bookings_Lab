@@ -8,10 +8,11 @@
 <script>
 
 import {eventBus} from './main.js'
+
 import GuestForm from './components/GuestForm';
 import GuestGrid from './components/GuestGrid';
 import GuestService from './services/GuestService';
-// import Guests from './components/Guest';
+// import Guests from './components/Guests';
 
 
 
@@ -30,19 +31,28 @@ export default {
     this.fetchGuests();
 
     eventBus.$on('new-booking-added', payload => {
-      GuestService.postGuest(payload)
-      .then(guest => this.guests.push(guest));
+      // GuestService.postGuest(payload)
+      // .then(guest => this.guests.push(guest));
+      this.guests.push(payload)
     });
 
-    // eventBus.$on()
+    eventBus.$on('delete-guest', id => {
+      GuestService.deleteBooking(id)
+      .then(() => {
+        const index = this.guests.findIndex(guest => guest._id === id);
+        this.guests.splice(index, 1);
+      });
+    })
   },
-  methods: {
-    fetchGuests() {
-      GuestService.getGuests()
-      .then(guests => this.guests = guests)
+    methods: {
+      fetchGuests() {
+        GuestService.getGuests()
+        .then(guests => this.guests = guests)
+
     }
   }
 }
+
 </script>
 
 <style>

@@ -1,18 +1,18 @@
 <template lang="html">
-  <form id="bookings-form" v-on:submit="handleFormSubmit">
+  <form id="bookings-form" v-on:submit.prevent="handleFormSubmit">
   <h2>Add a Booking</h2>
   <div class="formWrap">
     <label for="Name">Name:</label>
-    <input type="text" id="name" v-model="name">
+    <input type="text" id="name" v-model="name" required>
   </div>
   <div class="formWrap">
     <label for="Email">Email</label>
-    <input type="text" id="email" v-model="email">
+    <input type="text" id="email" v-model="email" required>
   </div>
   <div class="formWrap">
-    <input type="radio" name="booked" value="booked" v-model="booked">  <!-- v model? -->
+    <input type="radio" name="booked" value="Booked" v-model="booked">  <!-- v model? -->
     <label for="">Booked</label>
-    <input type="radio" name="booked" value="not_booked" v-model="booked"> <!-- v model? -->
+    <input type="radio" name="booked" value="Not Booked" v-model="booked"> <!-- v model? -->
     <label for="">Not Booked</label>
   </div>
   <button type="submit" name="button">Book!</button>
