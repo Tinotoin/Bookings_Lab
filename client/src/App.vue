@@ -58,7 +58,7 @@ export default {
 <style>
 
 body {
-  /* background: url('./assets/......') no-repeat; */
+  background: url('./assets/hotel_BG.jpg') no-repeat;
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
